@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ак-Ильбирс — Гордость Кыргызстана</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #080d1a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        .slideshow-card {
+            width: 100%;
+            max-width: 480px;
+            height: 92vh;
+            background: #111827;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px rgba(0, 242, 254, 0.2);
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 1s ease-in-out;
+            transform: scale(1.05);
+            z-index: 1;
+        }
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 35%, rgba(0,0,0,0.9) 100%);
+            z-index: 2;
+        }
+        .top-bar {
+            position: relative;
+            z-index: 3;
+        }
+        .progress-container {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+        .progress-segment {
+            flex: 1;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #00f2fe;
+        }
+        .title-box h1 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+        .title-box p {
+            font-size: 13px;
+            color: #00f2fe;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .bottom-content {
+            position: relative;
+            z-index: 3;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .slide-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00f2fe;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .slide-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+        }
+        .btn {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-card">
+    <div class="slide active">
+        <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1000&q=80" alt="Ак-Ильбирс">
+    </div>
+    <div class="slide">
+        <img src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&w=1000&q=80" alt="Снежный барс">
+    </div>
+    <div class="slide">
+        <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1000&q=80" alt="Барс Тянь-Шаня">
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="top-bar">
+        <div class="progress-container">
+            <div class="progress-segment"><div class="progress-fill" id="p0"></div></div>
+            <div class="progress-segment"><div class="progress-fill" id="p1"></div></div>
+            <div class="progress-segment"><div class="progress-fill" id="p2"></div></div>
+        </div>
+        <div class="title-box">
+            <h1>АК-ИЛЬБИРС 🇰🇬</h1>
+            <p>Национальный символ Кыргызстана</p>
+        </div>
+    </div>
+
+    <div class="bottom-content">
+        <div class="slide-title" id="info-title">Хозяин высоких гор</div>
+        <div class="slide-text" id="info-text">
+            Ак-Ильбирс (Снежный барс) — священный символ Кыргызской Республики, олицетворяющий благородство, силу, выносливость и верность родному краю.
+        </div>
+        <div class="controls">
+            <button class="btn" onclick="prevSlide()">◀ Назад</button>
+            <button class="btn" onclick="nextSlide()">Вперёд ▶</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const titleEl = document.getElementById('info-title');
+    const textEl = document.getElementById('info-text');
+
+    const data = [
+        {
+            title: "🏔️ Хозяин вершин Тянь-Шаня",
+            text: "Ак-Ильбирс — священный символ Кыргызской Республики, олицетворяющий благородство, выносливость и дух свободы горцев."
+        },
+        {
+            title: "❄️ Владыка вечных снегов",
+            text: "Снежный барс прекрасно адаптирован к жизни на высоте более 3000-4000 метров. Его пышный хвост помогает балансировать на скалах и согревает в мороз."
+        },
+        {
+            title: "🛡️ Природное достояние",
+            text: "Ак-Ильбирс занесён в Красную книгу. В Кыргызстане действует государственная программа по защите этого редкого и величественного хищника."
+        }
+    ];
+
+    let current = 0;
+    let timer = null;
+    let progressVal = 0;
+
+    function updateSlide() {
+        slides.forEach((s, idx) => s.classList.toggle('active', idx === current));
+        titleEl.innerText = data[current].title;
+        textEl.innerText = data[current].text;
+        
+        for(let i = 0; i < 3; i++) {
+            const fill = document.getElementById('p' + i);
+            if(i < current) fill.style.width = '100%';
+            else if(i === current) fill.style.width = progressVal + '%';
+            else fill.style.width = '0%';
+        }
+    }
+
+    function startAutoPlay() {
+        clearInterval(timer);
+        progressVal = 0;
+        timer = setInterval(() => {
+            progressVal += 2;
+            if(progressVal > 100) {
+                progressVal = 0;
+                current = (current + 1) % slides.length;
+            }
+            updateSlide();
+        }, 100);
+    }
+
+    function nextSlide() {
+        current = (current + 1) % slides.length;
+        startAutoPlay();
+    }
+
+    function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        startAutoPlay();
+    }
+
+    startAutoPlay();
+</script>
+
+</body>
+</html>
