@@ -5,370 +5,370 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ак-Ильбирс — Горный дух Кыргызстана</title>
     <style>
+        /* Базовые настройки */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
+
         body {
-            background-color: #0d1b2a;
-            color: #e0e1dd;
+            background-color: #030712;
+            color: #f8fafc;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 900px;
-            background: rgba(27, 38, 59, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            overflow-x: hidden;
             position: relative;
         }
+
+        /* Анимированные жидкие сферы (Liquid Glass effect) */
+        .liquid-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.55;
+            animation: floatAnimation 12s infinite alternate ease-in-out;
+            z-index: 1;
+        }
+
+        .blob-1 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            top: 5%;
+            left: 5%;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            bottom: 5%;
+            right: 5%;
+            animation-delay: -6s;
+        }
+
+        .blob-3 {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #0d9488, #2dd4bf);
+            top: 45%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            animation-delay: -3s;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(35px, -45px) scale(1.12);
+            }
+        }
+
+        /* Главная карточка Liquid Glass */
+        .glass-card {
+            width: 100%;
+            max-width: 820px;
+            min-height: 480px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 32px;
+            padding: 45px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Слайды и анимация появления */
         .slide {
             display: none;
-            animation: fadeIn 0.5s ease-in-out forwards;
+            animation: slideAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+
         .slide.active {
             display: block;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .slide-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            align-items: center;
-        }
-        @media (max-width: 768px) {
-            .slide-content {
-                grid-template-columns: 1fr;
+
+        @keyframes slideAppear {
+            from {
+                opacity: 0;
+                transform: translateY(16px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
         }
-        h1 {
-            color: #77abb7;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            grid-column: 1 / -1;
-        }
-        h2 {
-            color: #e0e1dd;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #415a77;
-            padding-bottom: 8px;
-            grid-column: 1 / -1;
-        }
-        p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #e0e1dd;
-            margin-bottom: 12px;
-        }
-        ul {
-            margin-left: 20px;
-            margin-bottom: 12px;
-        }
-        li {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 6px;
-        }
-        .img-box {
-            width: 100%;
-            height: 250px;
+
+        /* Оформление заголовков и текста */
+        .slide-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #38bdf8;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 12px;
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            background: #1b263b;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.1rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 12px rgba(255, 255, 255, 0.1);
         }
+
+        h2 {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 12px;
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            margin-left: 22px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin-bottom: 12px;
+            color: #cbd5e1;
+        }
+
+        /* Выделение ключевых слов */
+        strong {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        /* Панель управления (кнопки) */
         .controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 35px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         button {
-            background: #415a77;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        button:hover {
-            background: #77abb7;
+
+        button:hover:not(:disabled) {
+            background: rgba(56, 189, 248, 0.22);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+            transform: translateY(-2px);
         }
+
         button:disabled {
-            background: #2b3a4a;
-            color: #6c757d;
+            opacity: 0.25;
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
-        .slide-num {
-            font-size: 0.9rem;
-            color: #77abb7;
-            font-weight: bold;
+
+        .slide-counter {
+            font-size: 0.95rem;
+            color: #38bdf8;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <!-- Жидкие фоновые сферы -->
+    <div class="liquid-blob blob-1"></div>
+    <div class="liquid-blob blob-2"></div>
+    <div class="liquid-blob blob-3"></div>
+
+    <!-- Основной стеклянный контейнер -->
+    <div class="glass-card">
         
-        <!-- Слайд 1 -->
-        <div class="slide active">
-            <h1>❄️ Ак-Ильбирс — Снежный Барс</h1>
-            <h2>Хозяин небесных гор</h2>
-            <div class="slide-content">
-                <div>
-                    <p><strong>Ак-Ильбирс</strong> — легендарный хищник высокогорий Тянь-Шаня и Памира.</p>
-                    <p>Это уникальное животное занесено в Красную книгу и является национальным символом Кыргызстана.</p>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Snow_leopard_portrait.jpg/800px-Snow_leopard_portrait.jpg" alt="Ак-Ильбирс">
-                </div>
+        <div id="slides-wrapper">
+            <!-- Слайд 1 -->
+            <div class="slide active">
+                <span class="slide-tag">Введение</span>
+                <h1>❄️ Ак-Ильбирс — Горный дух</h1>
+                <h2>Властелин небесных хребтов</h2>
+                <p><strong>Снежный барс (ирбис)</strong> — величавый грациозный хищник, ставший священным символом дикой природы Кыргызстана.</p>
+                <p>Его таинственный образ жизни и умение скрываться среди вершин заслужили ему имя «вершинного призрака».</p>
             </div>
-        </div>
 
-        <!-- Слайд 2 -->
-        <div class="slide">
-            <h1>🐾 Кто такой ирбис?</h1>
-            <h2>Научный портрет</h2>
-            <div class="slide-content">
-                <div>
-                    <p><strong>Латинское название:</strong> Panthera uncia.</p>
-                    <p>Это единственная крупная кошка, постоянно живущая в условиях сурового высокогорного климата и вечных снегов.</p>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Uncia_uncia.jpg/800px-Uncia_uncia.jpg" alt="Ирбис в горах">
-                </div>
+            <!-- Слайд 2 -->
+            <div class="slide">
+                <span class="slide-tag">Классификация</span>
+                <h1>🐾 Биологический паспорт</h1>
+                <h2>Научные факты</h2>
+                <p><strong>Систематика:</strong> Млекопитающее семейства кошачьих (род Panthera).</p>
+                <p>Несмотря на крупные размеры, ирбис ближе к мелким кошкам: он не умеет рычать из-за строения гортани, а умеет тихо мурлыкать.</p>
             </div>
-        </div>
 
-        <!-- Слайд 3 -->
-        <div class="slide">
-            <h1>❄️ Внешний вид и адаптация</h1>
-            <h2>Создан для холода</h2>
-            <div class="slide-content">
-                <div>
-                    <ul>
-                        <li><strong>Мех:</strong> Очень густой и тёплый, дымчато-серого цвета с тёмными пятнами для маскировки.</li>
-                        <li><strong>Лапы:</strong> Широкие и мохнатые, работают как снегоступы.</li>
-                        <li><strong>Легкие:</strong> Имеет большую грудную клетку для дыхания разряженным горным воздухом.</li>
-                    </ul>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Snow_Leopard_Resting.jpg/800px-Snow_Leopard_Resting.jpg" alt="Адаптация ирбиса">
-                </div>
+            <!-- Слайд 3 -->
+            <div class="slide">
+                <span class="slide-tag">Адаптация</span>
+                <h1>❄️ Маскировка и мех</h1>
+                <h2>Защита от мороза</h2>
+                <ul>
+                    <li><strong>Плотная шерсть:</strong> Густота меха на брюхе достигает 5 см для защиты от ледяных скал.</li>
+                    <li><strong>Уникальный окрас:</strong> Дымчатый мех с розетками делает его незаметным среди гранитных утесов.</li>
+                </ul>
             </div>
-        </div>
 
-        <!-- Слайд 4 -->
-        <div class="slide">
-            <h1>🐆 Секрет уникального хвоста</h1>
-            <h2>Главный инструмент барса</h2>
-            <div class="slide-content">
-                <div>
-                    <p>Длина хвоста составляет почти <strong>1 метр</strong> — это практически длина всего его тела!</p>
-                    <ul>
-                        <li>Служит рулём и балансиром при прыжках по крутым скалам.</li>
-                        <li>В морозные ночи барс укрывает хвостом нос и морду, как теплым шарфом.</li>
-                    </ul>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Uncia_uncia_sleeping.jpg/800px-Uncia_uncia_sleeping.jpg" alt="Хвост ирбиса">
-                </div>
+            <!-- Слайд 4 -->
+            <div class="slide">
+                <span class="slide-tag">Анатомия</span>
+                <h1>🏔️ Лапы-снегоступы</h1>
+                <h2>Передвижение по сугробам</h2>
+                <p>Лапы барса необычайно широкие и покрыты густой шерстью между подушечками.</p>
+                <p>Это снижает давление на снежный покров, предотвращая проваливание в глубокий сугроб во время погони.</p>
             </div>
-        </div>
 
-        <!-- Слайд 5 -->
-        <div class="slide">
-            <h1>🏔️ Где обитает Ак-Ильбирс?</h1>
-            <h2>Высокогорные вершины</h2>
-            <div class="slide-content">
-                <div>
-                    <p>Живёт в 12 странах Центральной Азии на высоте от <strong>1500 до 6000 метров</strong> над уровнем моря.</p>
-                    <p>В Кыргызстане встречается на хребтах Тянь-Шаня, Памиро-Алая, а также в заповедниках Сарычат-Эрташ и Нарынский.</p>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Tian_Shan_mountains_Kyrgyzstan.jpg/800px-Tian_Shan_mountains_Kyrgyzstan.jpg" alt="Горы Тянь-Шань">
-                </div>
+            <!-- Слайд 5 -->
+            <div class="slide">
+                <span class="slide-tag">Особенность</span>
+                <h1>🐆 Роль росскошного хвоста</h1>
+                <h2>Баланс и тепло</h2>
+                <p>Длина хвоста составляет до <strong>100 сантиметров</strong> (почти 3/4 от длины туловища).</p>
+                <ul>
+                    <li>Служит рулем высоты при сложных прыжках.</li>
+                    <li>Работает как теплое одеяло во время сна на снегу.</li>
+                </ul>
             </div>
-        </div>
 
-        <!-- Слайд 6 -->
-        <div class="slide">
-            <h1>🥩 Охота и рацион</h1>
-            <h2>Властелин скал</h2>
-            <div class="slide-content">
-                <div>
-                    <p>Основная добыча ирбиса (до 80% рациона) — горные козлы (теке) и архары.</p>
-                    <p>Охотится из засады, неслышно подкрадываясь к жертве сверху и совершая молниеносный бросок.</p>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Capra_sibirica_males.jpg/800px-Capra_sibirica_males.jpg" alt="Горные козлы">
-                </div>
+            <!-- Слайд 6 -->
+            <div class="slide">
+                <span class="slide-tag">География</span>
+                <h1>🗺️ Ареал обитания</h1>
+                <h2>Высокогорные экосистемы</h2>
+                <p>Снежный барс живет в поясе альпийских лугов и крутых ущелий на высоте от <strong>2000 до 5000 метров</strong>.</p>
+                <p>Основные территории в КР: Тянь-Шань, Алайский хребет и Внутренний Тянь-Шань.</p>
             </div>
-        </div>
 
-        <!-- Слайд 7 -->
-        <div class="slide">
-            <h1>🚀 Рекордсмен по прыжкам</h1>
-            <h2>Невероятная ловкость</h2>
-            <div class="slide-content">
-                <div>
-                    <p>Снежный барс — абсолютный рекордсмен среди всех семейств кошачьих по длине прыжка!</p>
-                    <p>Он способен перепрыгнуть ущелье длиной до <strong>10–15 метров</strong> в один прыжок.</p>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Snow_Leopard_in_Snow.jpg/800px-Snow_Leopard_in_Snow.jpg" alt="Прыжок ирбиса">
-                </div>
+            <!-- Слайд 7 -->
+            <div class="slide">
+                <span class="slide-tag">Физиология</span>
+                <h1>🫁 Дыхание в условиях разреженного воздуха</h1>
+                <h2>Горная адаптация</h2>
+                <p>У ирбиса широкая носовая полость и увеличенный объем легких.</p>
+                <p>Проходя через носовые каналы, ледяной высокогорный воздух успевает прогреваться до поступления в лёгкие.</p>
             </div>
-        </div>
 
-        <!-- Слайд 8 -->
-        <div class="slide">
-            <h1>🌙 Образ жизни</h1>
-            <h2>Одинокий страж</h2>
-            <div class="slide-content">
-                <div>
-                    <ul>
-                        <li>Ведёт одиночный образ жизни.</li>
-                        <li>Наиболее активен в сумерках и ночью.</li>
-                        <li>Территория одного барса может достигать от 20 до 200 квадратных километров.</li>
-                    </ul>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Uncia_uncia.jpg/800px-Uncia_uncia.jpg" alt="Ночной ирбис">
-                </div>
+            <!-- Слайд 8 -->
+            <div class="slide">
+                <span class="slide-tag">Питание</span>
+                <h1>🥩 Охотничий рацион</h1>
+                <h2>Естественный баланс</h2>
+                <p>Основой питания служат горные парнокопытные: <strong>горные козлы (теке)</strong> и <strong>архары (марко поло)</strong>.</p>
+                <p>В летний период рацион дополняют сурки, пищухи и горные птицы.</p>
             </div>
-        </div>
 
-        <!-- Слайд 9 -->
-        <div class="slide">
-            <h1>🐾 Потомство</h1>
-            <h2>Забота о будущих барсах</h2>
-            <div class="slide-content">
-                <div>
-                    <p>В выводке обычно рождается от 2 до 3 котят.</p>
-                    <p>Мать воспитывает и учит котят охотиться почти до двухлетнего возраста, после чего они начинают самостоятельную жизнь.</p>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Snow_leopard_cub.jpg/800px-Snow_leopard_cub.jpg" alt="Котёнок барса">
-                </div>
+            <!-- Слайд 9 -->
+            <div class="slide">
+                <span class="slide-tag">Навыки</span>
+                <h1>🚀 Мастерство прыжка</h1>
+                <h2>Рекордная прыгучесть</h2>
+                <p>Благодаря мощным задним лапам и сильной мускулатуре, Ак-Ильбирс совершает прыжки в длину до <strong>15 метров</strong>.</p>
+                <p>Он способно преодолевать глубокие пропасти и крутые каменные осыпи за секунды.</p>
             </div>
-        </div>
 
-        <!-- Слайд 10 -->
-        <div class="slide">
-            <h1>⚠️ Главные угрозы</h1>
-            <h2>Почему он в Красной книге?</h2>
-            <div class="slide-content">
-                <div>
-                    <ul>
-                        <li><strong>Браконьерство:</strong> Незаконная охота ради ценного меха.</li>
-                        <li><strong>Сокращение корма:</strong> Уменьшение численности горных козлов.</li>
-                        <li><strong>Освоение гор:</strong> Деятельность человека вытесняет барса из естественной среды.</li>
-                    </ul>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Snow_Leopard_Resting.jpg/800px-Snow_Leopard_Resting.jpg" alt="Охрана природы">
-                </div>
+            <!-- Слайд 10 -->
+            <div class="slide">
+                <span class="slide-tag">Поведение</span>
+                <h1>🌙 Скрытный образ жизни</h1>
+                <h2>Одинокий охотник</h2>
+                <p>Барсы — строго одиночные животные. У каждого зверя есть свои границы владения (от 30 до 150 кв. км).</p>
+                <p>Они метят свои пути и избегают прямых встреч с другими сородичами.</p>
             </div>
-        </div>
 
-        <!-- Слайд 11 -->
-        <div class="slide">
-            <h1>🛡️ Защита и сохранение</h1>
-            <h2>Как спасают Ак-Ильбирса?</h2>
-            <div class="slide-content">
-                <div>
-                    <ul>
-                        <li>Установка фотоловушек в заповедниках для мониторинга популяции.</li>
-                        <li>Ужесточение законов и штрафов за браконьерство.</li>
-                        <li>Международные программы по сохранению вида.</li>
-                    </ul>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Snow_leopard_portrait.jpg/800px-Snow_leopard_portrait.jpg" alt="Фотоловушка">
-                </div>
+            <!-- Слайд 11 -->
+            <div class="slide">
+                <span class="slide-tag">Размножение</span>
+                <h1>🐾 Материнская забота</h1>
+                <h2>Выращивание котят</h2>
+                <p>Логово обустраивается в защищенных пещерах и расщелинах скал.</p>
+                <p>Самка рожает 2–3 слепых котят и воспитывает их почти до двух лет, обучая бесшумной охоте.</p>
             </div>
-        </div>
 
-        <!-- Слайд 12 -->
-        <div class="slide">
-            <h1>🏔️ Заключение</h1>
-            <h2>Сохраним символ гор!</h2>
-            <div class="slide-content">
-                <div>
-                    <p>Ак-Ильбирс — это верхушка экологической пирамиды наших гор. Если жив барс — здорова вся природа Кыргызстана!</p>
-                    <p style="margin-top: 15px; font-weight: bold; color: #77abb7;">Спасибо за внимание!</p>
-                </div>
-                <div class="img-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Snow_leopard_portrait.jpg/800px-Snow_leopard_portrait.jpg" alt="Финал">
-                </div>
+            <!-- Слайд 12 -->
+            <div class="slide">
+                <span class="slide-tag">Культура</span>
+                <h1>🇰🇬 Символика Кыргызстана</h1>
+                <h2>Национальное наследие</h2>
+                <p>Ак-Ильбирс занимает важное место в эпосе «Манас» и народных сказаниях.</p>
+                <p>Он олицетворяет благородство, свободолюбие, смелость и нетронутую горную природу нашей страны.</p>
             </div>
-        </div>
 
-        <!-- Кнопки управления -->
-        <div class="controls">
-            <button id="prevBtn" onclick="changeSlide(-1)" disabled>Назад</button>
-            <span class="slide-num" id="slideNum">Слайд 1 из 12</span>
-            <button id="nextBtn" onclick="changeSlide(1)">Вперед</button>
-        </div>
+            <!-- Слайд 13 -->
+            <div class="slide">
+                <span class="slide-tag">Экология</span>
+                <h1>⚖️ Экологическая роль</h1>
+                <h2>Индикатор здоровья гор</h2>
+                <p>Снежный барс находится на вершине пищевой цепи.</p>
+                <p>Его присутствие свидетельствует об устойчивости всей горной экосистемы и достаточной численности диких животных.</p>
+            </div>
 
-    </div>
+            <!-- Слайд 14 -->
+            <div class="slide">
+                <span class="slide-tag">Угрозы</span>
+                <h1>⚠️ Причины сокращения популяции</h1>
+                <h2>Факторы риска</h2>
+                <ul>
+                    <li><strong>Браконьерство:</strong> Незаконный отстрел из-за ценного меха.</li>
+                    <li><strong>Сокращение кормовой базы:</strong> Уменьшение стад диких козлов.</li>
+                    <li><strong>Деятельность человека:</strong> Освоение высокогорных пастбищ.</li>
+                </ul>
+            </div>
 
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const slideNum = document.getElementById('slideNum');
-
-        function updateSlides() {
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentSlide);
-            });
-
-            slideNum.textContent = `Слайд ${currentSlide + 1} из ${slides.length}`;
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === slides.length - 1;
-        }
-
-        function changeSlide(direction) {
-            currentSlide += direction;
-            updateSlides();
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
-                changeSlide(1);
-            } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
-                changeSlide(-1);
-            }
-        });
-    </script>
-</bo
-
-
-
-    
+            <!-- Слайд 15 -->
+            <div class="slide">
+                <span class="slide-tag">Охрана</span>
+                <h1>🛡️ Заповедники и мониторинг</h1>
+                <h2>Меры сохранения</h2>
+                <p>В Кыргызстане созданы особые охраняемые зоны (Сарычат-Эрташ, Падыша-Ата).</p>
+                <p>Экологи используют <strong>фотоловушки</strong> и спутниковое отслеживание для
+                    
